@@ -2,7 +2,7 @@
 
 ## TODO
 
-- [ ] Make depoy (vercel)
+- [x] Make depoy (vercel)
 - [ ] set up basic ui the resume info
 - [ ] set up database (vercel postgres)
 - [ ] attach  database to UI
