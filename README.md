@@ -4,11 +4,11 @@
 
 - [x] Make depoy (vercel)
 - [ ] set up basic ui the resume info
-- [ ] set up database (vercel postgres)
-- [ ] attach  database to UI
+- [x] set up database (vercel postgres)
+- [x] attach  database to UI
 - [ ] routing
-- [ ] image upload
+- [x] image upload
 - [ ] Error managment (w/ Sentry)
-- [ ] Routing/imgae page (parallel route)
+- [ ] Routing (images|pdf) page (parallel route)
 - [ ] Analatics (posthog?)
 - [ ] Ratelimiting (upstash?)
