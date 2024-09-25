@@ -1,7 +1,7 @@
 import '~/styles/globals.css'
 import { Roboto_Mono } from 'next/font/google'
 import { type Metadata } from 'next'
-import { ThemeProvider } from '@/components/global/theming/theme-provider'
+import { ThemeProvider } from '@/components/global/theming/ThemeProvider'
 import { Nav } from '@/components/global/navigation/Nav'
 
 export const metadata: Metadata = {
