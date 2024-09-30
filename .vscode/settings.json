@@ -1,0 +1,14 @@
+{
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  // prettier as code formatter for js ts and tsx and css and nextjs react
+  // "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // no default formatter
+  // "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.defaultFormatter": "undefined",
+  "prettier.useEditorConfig": false,
+  // "[typescriptreact]": {
+  //   "editor.defaultFormatter": "esbenp.prettier-vscode"
+  // }
+}
