@@ -40,7 +40,7 @@ export default function RootLayout({
                             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                                 <ActiveSectionContextProvider>
                                     <Header />
-                                    <main className="pt-28 sm:pt-36">
+                                    <main className="pt-28 sm:pt-40">
                                         <div className="mx-auto max-w-7xl">
                                             <div className="relative px-4 sm:px-8 lg:px-12">
                                                 <div className="mx-auto max-w-2xl lg:max-w-5xl">
