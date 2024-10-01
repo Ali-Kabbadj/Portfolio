@@ -7,12 +7,12 @@ Command: npx gltfjsx@6.5.2 .\Avatar.glb
 */
 
 import React, { useEffect, useRef, useState } from 'react'
+import { useGraph, useThree, useFrame } from '@react-three/fiber'
 import { useGLTF, useAnimations } from '@react-three/drei'
 import { SkeletonUtils } from 'three-stdlib'
-import { useGraph, useThree, useFrame } from '@react-three/fiber'
 
 export function Model(props) {
-  const groupAvatar = useRef()
+    const groupAvatar = useRef()
   const groupChair = useRef()
   const groupPC = useRef()
   const { scene, animations } = useGLTF('/models/Avatar_extra.glb')
@@ -71,69 +71,212 @@ export function Model(props) {
 
   })
 
-
-  return (
-    <group {...props} dispose={null}>
-      <group name="Scene">
-        <group ref={groupAvatar} name="Main-Armature">
-          <primitive object={nodes.Hips} />
-          <skinnedMesh name="Wolf3D_Body" geometry={nodes.Wolf3D_Body.geometry} material={materials['Wolf3D_Body.001']} skeleton={nodes.Wolf3D_Body.skeleton} />
-          <skinnedMesh name="Wolf3D_Outfit_Bottom" geometry={nodes.Wolf3D_Outfit_Bottom.geometry} material={materials['Wolf3D_Outfit_Bottom.001']} skeleton={nodes.Wolf3D_Outfit_Bottom.skeleton} />
-          <skinnedMesh name="Wolf3D_Outfit_Footwear" geometry={nodes.Wolf3D_Outfit_Footwear.geometry} material={materials['Wolf3D_Outfit_Footwear.001']} skeleton={nodes.Wolf3D_Outfit_Footwear.skeleton} />
-          <skinnedMesh name="Wolf3D_Outfit_Top" geometry={nodes.Wolf3D_Outfit_Top.geometry} material={materials['Wolf3D_Outfit_Top.001']} skeleton={nodes.Wolf3D_Outfit_Top.skeleton} />
-          <skinnedMesh name="EyeLeft" geometry={nodes.EyeLeft.geometry} material={materials['Wolf3D_Eye.001']} skeleton={nodes.EyeLeft.skeleton} morphTargetDictionary={nodes.EyeLeft.morphTargetDictionary} morphTargetInfluences={nodes.EyeLeft.morphTargetInfluences} />
-          <skinnedMesh name="EyeRight" geometry={nodes.EyeRight.geometry} material={materials['Wolf3D_Eye.001']} skeleton={nodes.EyeRight.skeleton} morphTargetDictionary={nodes.EyeRight.morphTargetDictionary} morphTargetInfluences={nodes.EyeRight.morphTargetInfluences} />
-          <skinnedMesh name="Wolf3D_Head" geometry={nodes.Wolf3D_Head.geometry} material={materials['Wolf3D_Skin.001']} skeleton={nodes.Wolf3D_Head.skeleton} morphTargetDictionary={nodes.Wolf3D_Head.morphTargetDictionary} morphTargetInfluences={nodes.Wolf3D_Head.morphTargetInfluences} />
-          <skinnedMesh name="Wolf3D_Teeth" geometry={nodes.Wolf3D_Teeth.geometry} material={materials['Wolf3D_Teeth.001']} skeleton={nodes.Wolf3D_Teeth.skeleton} morphTargetDictionary={nodes.Wolf3D_Teeth.morphTargetDictionary} morphTargetInfluences={nodes.Wolf3D_Teeth.morphTargetInfluences} />
-        </group>
-        <group ref={groupPC} name="Macbook_prolaptop" position={[-0.537, 0.471, -0.49]} rotation={[Math.PI, -0.665, Math.PI]} scale={0.52}>
-          <group name="Empty001" position={[0, 0.027, -0.28]} rotation={[-0.263, 0, 0]} scale={0.259}>
-            <group name="Cube001" position={[0.001, -0.051, -0.002]} rotation={[1.572, 0, 0]} scale={1.06}>
-              <mesh name="Cube097" geometry={nodes.Cube097.geometry} material={materials.body} />
-              <mesh name="Cube097_1" geometry={nodes.Cube097_1.geometry} material={materials['black.002']} />
-              <mesh name="Cube097_2" geometry={nodes.Cube097_2.geometry} material={materials.screen} />
-              <mesh name="Cube097_3" geometry={nodes.Cube097_3.geometry} material={materials.dark} />
-              <mesh name="Cube097_4" geometry={nodes.Cube097_4.geometry} material={materials['glass.002']} />
-              <mesh name="Cube097_5" geometry={nodes.Cube097_5.geometry} material={materials['Material.111']} />
-              <mesh name="Cube097_6" geometry={nodes.Cube097_6.geometry} material={materials['Material.112']} />
-              <mesh name="Cube097_7" geometry={nodes.Cube097_7.geometry} material={materials['glass.003']} />
-              <mesh name="Cube097_8" geometry={nodes.Cube097_8.geometry} material={materials['Apple-logo']} />
+    return (
+        <group {...props} dispose={null}>
+            <group name="Scene">
+                <group ref={groupAvatar} name="Main-Armature">
+                    <primitive object={nodes.Hips} />
+                    <skinnedMesh
+                        name="Wolf3D_Body"
+                        geometry={nodes.Wolf3D_Body.geometry}
+                        material={materials['Wolf3D_Body.001']}
+                        skeleton={nodes.Wolf3D_Body.skeleton}
+                    />
+                    <skinnedMesh
+                        name="Wolf3D_Outfit_Bottom"
+                        geometry={nodes.Wolf3D_Outfit_Bottom.geometry}
+                        material={materials['Wolf3D_Outfit_Bottom.001']}
+                        skeleton={nodes.Wolf3D_Outfit_Bottom.skeleton}
+                    />
+                    <skinnedMesh
+                        name="Wolf3D_Outfit_Footwear"
+                        geometry={nodes.Wolf3D_Outfit_Footwear.geometry}
+                        material={materials['Wolf3D_Outfit_Footwear.001']}
+                        skeleton={nodes.Wolf3D_Outfit_Footwear.skeleton}
+                    />
+                    <skinnedMesh
+                        name="Wolf3D_Outfit_Top"
+                        geometry={nodes.Wolf3D_Outfit_Top.geometry}
+                        material={materials['Wolf3D_Outfit_Top.001']}
+                        skeleton={nodes.Wolf3D_Outfit_Top.skeleton}
+                    />
+                    <skinnedMesh
+                        name="EyeLeft"
+                        geometry={nodes.EyeLeft.geometry}
+                        material={materials['Wolf3D_Eye.001']}
+                        skeleton={nodes.EyeLeft.skeleton}
+                        morphTargetDictionary={
+                            nodes.EyeLeft.morphTargetDictionary
+                        }
+                        morphTargetInfluences={
+                            nodes.EyeLeft.morphTargetInfluences
+                        }
+                    />
+                    <skinnedMesh
+                        name="EyeRight"
+                        geometry={nodes.EyeRight.geometry}
+                        material={materials['Wolf3D_Eye.001']}
+                        skeleton={nodes.EyeRight.skeleton}
+                        morphTargetDictionary={
+                            nodes.EyeRight.morphTargetDictionary
+                        }
+                        morphTargetInfluences={
+                            nodes.EyeRight.morphTargetInfluences
+                        }
+                    />
+                    <skinnedMesh
+                        name="Wolf3D_Head"
+                        geometry={nodes.Wolf3D_Head.geometry}
+                        material={materials['Wolf3D_Skin.001']}
+                        skeleton={nodes.Wolf3D_Head.skeleton}
+                        morphTargetDictionary={
+                            nodes.Wolf3D_Head.morphTargetDictionary
+                        }
+                        morphTargetInfluences={
+                            nodes.Wolf3D_Head.morphTargetInfluences
+                        }
+                    />
+                    <skinnedMesh
+                        name="Wolf3D_Teeth"
+                        geometry={nodes.Wolf3D_Teeth.geometry}
+                        material={materials['Wolf3D_Teeth.001']}
+                        skeleton={nodes.Wolf3D_Teeth.skeleton}
+                        morphTargetDictionary={
+                            nodes.Wolf3D_Teeth.morphTargetDictionary
+                        }
+                        morphTargetInfluences={
+                            nodes.Wolf3D_Teeth.morphTargetInfluences
+                        }
+                    />
+                </group>
+                <group
+                    ref={groupPC}
+                    name="Macbook_prolaptop"
+                    position={[-0.537, 0.471, -0.49]}
+                    rotation={[Math.PI, -0.665, Math.PI]}
+                    scale={0.52}
+                >
+                    <group
+                        name="Empty001"
+                        position={[0, 0.027, -0.28]}
+                        rotation={[-0.263, 0, 0]}
+                        scale={0.259}
+                    >
+                        <group
+                            name="Cube001"
+                            position={[0.001, -0.051, -0.002]}
+                            rotation={[1.572, 0, 0]}
+                            scale={1.06}
+                        >
+                            <mesh
+                                name="Cube097"
+                                geometry={nodes.Cube097.geometry}
+                                material={materials.screen}
+                            />
+                            <mesh
+                                name="Cube097_1"
+                                geometry={nodes.Cube097_1.geometry}
+                                material={materials.PaletteMaterial006}
+                            />
+                            <mesh
+                                name="Cube097_2"
+                                geometry={nodes.Cube097_2.geometry}
+                                material={materials.PaletteMaterial008}
+                            />
+                            <mesh
+                                name="Cube097_3"
+                                geometry={nodes.Cube097_3.geometry}
+                                material={materials['Apple-logo']}
+                            />
+                            <mesh
+                                name="Cube097_4"
+                                geometry={nodes.Cube097_4.geometry}
+                                material={materials.PaletteMaterial001}
+                            />
+                            <mesh
+                                name="Cube097_5"
+                                geometry={nodes.Cube097_5.geometry}
+                                material={materials.PaletteMaterial003}
+                            />
+                            <mesh
+                                name="Cube097_6"
+                                geometry={nodes.Cube097_6.geometry}
+                                material={materials.PaletteMaterial007}
+                            />
+                        </group>
+                    </group>
+                    <group
+                        name="Cube"
+                        position={[0, 0.017, -0.003]}
+                        rotation={[-0.016, 0, 0]}
+                        scale={0.274}
+                    >
+                        <mesh
+                            name="Cube098"
+                            geometry={nodes.Cube098.geometry}
+                            material={materials.PaletteMaterial002}
+                        />
+                        <mesh
+                            name="Cube098_1"
+                            geometry={nodes.Cube098_1.geometry}
+                            material={materials.PaletteMaterial001}
+                        />
+                        <mesh
+                            name="Cube098_2"
+                            geometry={nodes.Cube098_2.geometry}
+                            material={materials.PaletteMaterial003}
+                        />
+                    </group>
+                    <group
+                        name="Cube003"
+                        position={[0.006, 0.027, -0.093]}
+                        scale={0.259}
+                    >
+                        <mesh
+                            name="Cube095"
+                            geometry={nodes.Cube095.geometry}
+                            material={materials['key.002']}
+                        />
+                        <mesh
+                            name="Cube095_1"
+                            geometry={nodes.Cube095_1.geometry}
+                            material={materials.PaletteMaterial004}
+                        />
+                    </group>
+                    <mesh
+                        name="Cube004"
+                        geometry={nodes.Cube004.geometry}
+                        material={materials.PaletteMaterial005}
+                        position={[-0.393, 0.019, -0.222]}
+                        rotation={[0.001, 0, 0]}
+                        scale={[0.006, 0.004, 0.008]}
+                    />
+                </group>
+                <group
+                    ref={groupChair}
+                    name="Renna_Office_Chair"
+                    position={[-0.58, 0, -0.535]}
+                    rotation={[0, 0.601, 0]}
+                >
+                    <mesh
+                        name="caps"
+                        geometry={nodes.caps.geometry}
+                        material={materials.PaletteMaterial003}
+                    />
+                    <mesh
+                        name="fabric"
+                        geometry={nodes.fabric.geometry}
+                        material={materials['Emerald green']}
+                    />
+                    <mesh
+                        name="metal"
+                        geometry={nodes.metal.geometry}
+                        material={materials['Sandblasted black metal']}
+                    />
+                </group>
             </group>
-            <mesh name="Text" geometry={nodes.Text.geometry} material={materials['Material.108']} position={[0.01, 0.064, -0.002]} rotation={[1.571, 0, 0]} scale={[0.044, 0.045, 0.049]} />
-          </group>
-          <group name="Cube" position={[0, 0.017, -0.003]} rotation={[-0.016, 0, 0]} scale={0.274}>
-            <mesh name="Cube098" geometry={nodes.Cube098.geometry} material={materials.body} />
-            <mesh name="Cube098_1" geometry={nodes.Cube098_1.geometry} material={materials.Dark} />
-            <mesh name="Cube098_2" geometry={nodes.Cube098_2.geometry} material={materials['Material.113']} />
-          </group>
-          <mesh name="Cube002" geometry={nodes.Cube002.geometry} material={materials.body} position={[0, 0.025, 0.149]} rotation={[0.001, 0, 0]} scale={0.121} />
-          <group name="Cube003" position={[0.006, 0.027, -0.093]} scale={0.259}>
-            <mesh name="Cube095" geometry={nodes.Cube095.geometry} material={materials.key} />
-            <mesh name="Cube095_1" geometry={nodes.Cube095_1.geometry} material={materials['key.002']} />
-            <mesh name="Cube095_2" geometry={nodes.Cube095_2.geometry} material={materials['Material.110']} />
-          </group>
-          <mesh name="Cube004" geometry={nodes.Cube004.geometry} material={materials['black.003']} position={[-0.393, 0.019, -0.222]} rotation={[0.001, 0, 0]} scale={[0.006, 0.004, 0.008]} />
-          <mesh name="Cube006" geometry={nodes.Cube006.geometry} material={materials.black} position={[-0.392, 0.02, -0.227]} rotation={[0.001, 0, 0]} scale={[0.006, 0.003, 0.001]} />
-          <mesh name="Cube007" geometry={nodes.Cube007.geometry} material={materials.black} position={[-0.392, 0.018, -0.227]} rotation={[0.001, 0, 0]} scale={[0.006, 0.003, 0.001]} />
-          <mesh name="Cube008" geometry={nodes.Cube008.geometry} material={materials['black.003']} position={[-0.393, 0.019, -0.183]} rotation={[0.001, 0, 0]} scale={[0.006, 0.004, 0.008]} />
-          <mesh name="Cube009" geometry={nodes.Cube009.geometry} material={materials.black} position={[-0.392, 0.02, -0.188]} rotation={[0.001, 0, 0]} scale={[0.006, 0.003, 0.001]} />
-          <mesh name="Cube010" geometry={nodes.Cube010.geometry} material={materials.black} position={[-0.392, 0.018, -0.188]} rotation={[0.001, 0, 0]} scale={[0.006, 0.003, 0.001]} />
-          <mesh name="Cube011" geometry={nodes.Cube011.geometry} material={materials.key} position={[0.14, 0.027, -0.167]} scale={0.259} />
-          <mesh name="Cube013" geometry={nodes.Cube013.geometry} material={materials.body} position={[-0.4, 0.026, -0.213]} scale={[0.001, 0, 0.001]} />
-          <group name="Cube014" position={[0.321, 0.026, -0.213]} scale={[0.001, 0, 0.001]}>
-            <mesh name="Cube084" geometry={nodes.Cube084.geometry} material={materials.body} />
-            <mesh name="Cube084_1" geometry={nodes.Cube084_1.geometry} material={materials['black.001']} />
-          </group>
         </group>
-        <group ref={groupChair} name="Renna_Office_Chair" position={[-0.58, 0, -0.535]} rotation={[0, 0.601, 0]}>
-          <mesh name="caps" geometry={nodes.caps.geometry} material={materials.Rubber} />
-          <mesh name="chrome" geometry={nodes.chrome.geometry} material={materials.chrome} />
-          <mesh name="fabric" geometry={nodes.fabric.geometry} material={materials['Emerald green']} />
-          <mesh name="metal" geometry={nodes.metal.geometry} material={materials['Sandblasted black metal']} />
-        </group>
-      </group>
-    </group>
-  )
+    )
 }
 
 useGLTF.preload('/models/Avatar_extra.glb')

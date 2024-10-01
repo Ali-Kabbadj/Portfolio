@@ -7,7 +7,7 @@
   // no default formatter
   // "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.defaultFormatter": "undefined",
-  "prettier.useEditorConfig": false,
+  "prettier.useEditorConfig": false
   // "[typescriptreact]": {
   //   "editor.defaultFormatter": "esbenp.prettier-vscode"
   // }
