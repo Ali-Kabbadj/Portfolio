@@ -5,12 +5,10 @@ import React, { Suspense, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Environment, OrbitControls, Reflector, useTexture } from '@react-three/drei';
 import {Avatar} from './Avatar';
-import { useControls } from 'leva'
 import * as THREE from 'three'
 
 // styling using twailwind and css variables
 export default function Scene() {
-const envProps = useControls({ background: false })
    return (
       <Canvas
          camera={{ position: [0, 0, 10], fov: 20, near: 0.1, far: 1000 }}
@@ -18,7 +16,6 @@ const envProps = useControls({ background: false })
          shadows
          dpr={[1, 2]}
       >
-          <Environment {...envProps} files="adams_place_bridge_1k.hdr" />
          <ambientLight intensity={7} />
          <spotLight position={ [10, 10, 10] }
          angle={0.15} penumbra={1} />
