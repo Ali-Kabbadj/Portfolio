@@ -37,14 +37,14 @@ export default function RootLayout({
                             <div className="absolute top-[-1rem] -z-10 left-[-35rem] h-[31.25rem] w-[50rem] rounded-full blur-[10rem] sm:w-[68.75rem] md:left-[-33rem] lg:left-[-28rem] xl:left-[-15rem] 2xl:left-[-5rem] bg-secondary/20 dark:bg-secondary/10"></div>
                              <div className="absolute w-[50vw] h-[50vh] bg-black rounded-full  bg-primary/20 dark:bg-primary/10 blur-[1000px] top-[50%] left-[50%] transform translate-x-[-50%] translate-y-[-50%]"></div>
                             {/* Content wrapper */}
-                            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                            <div className="mx-auto">
                                 <ActiveSectionContextProvider>
                                     <Header />
                                     {/* <main className="pt-28 sm:pt-40"> */}
                                         <main className="">
                                         <div className="mx-auto max-w-7xl">
                                             <div className="relative px-4 sm:px-8 lg:px-12">
-                                                <div className="mx-auto max-w-2xl lg:max-w-5xl">
+                                                <div className="mx-auto">
                                                     {children}
                                                 </div>
                                             </div>

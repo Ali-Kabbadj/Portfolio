@@ -1,3 +1,4 @@
+// @ts-nocheck
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
@@ -121,15 +122,33 @@ export function Avatar(props) {
       }
     }
   }, [handlePointerDown, handlePointerMove, handlePointerUp])
+  const hdrEquirect = useMemo(() => new THREE.TextureLoader().load(
+    "src/empty_warehouse_01_2k.hdr",  
+    () => { 
+      hdrEquirect.mapping = THREE.EquirectangularReflectionMapping; 
+    }
+  ), []);
+  const material = new THREE.MeshPhysicalMaterial({  
+    roughness: 0.1,
+    transmission: 1,
+    thickness: 2,
+    transmissionRoughness: 0,
+    clearcoat: 1,
+    envMap: hdrEquirect,
+  });
 
   return (
     <group ref={group} {...props} dispose={null} position={[0, -1, 0]}>
       <group name="Scene">
         <group ref={orbit} name="Orbit" position={[-0.065, 1.323, -0.062]}   rotation={[0, 0.001, 0.02]} scale={0.683}>
-          <mesh name="Planet" geometry={nodes.Planet.geometry} material={nodes.Planet.material}   position={[0.947, 0.535, -1.034]} scale={0.192}>
+          {/* scale should be in relashition to how close far from the cameram the mesh is */}
+          <mesh name="Planet_0" geometry={new THREE.IcosahedronGeometry(1, 8)} material={material}   position={[0.947, 0.535, -1.034]} scale={0.2 } >
+  
           </mesh>
-          <mesh name="Planet-1" geometry={nodes.Planet.geometry} material={nodes.Planet.material} position={[0.947, 0.535, 1.034]} scale={0.192} />
-          <mesh name="Planet-2" geometry={nodes.Planet.geometry} material={nodes.Planet.material} position={[-1.034, 0.535, 0.947]} scale={0.192} />
+          <mesh name="Planet-1"  geometry={new THREE.IcosahedronGeometry(1, 8)} material={material} position={[0.947, 0.535, 1.034]} scale={0.192} />
+          <mesh name="Planet-2"  geometry={new THREE.IcosahedronGeometry(1, 8)} material={material} position={[-1.034, 0.535, 0.947]} scale={0.192} />
+          <mesh name="Planet-3"  geometry={new THREE.IcosahedronGeometry(1, 8)} material={material} position={[-1.034, -0.535, -0.947]} scale={0.192} />
+          <mesh name="Planet-4"  geometry={new THREE.IcosahedronGeometry(1, 8)} material={material} position={[-1.034, -0.535, 0.947]} scale={0.192} />
         </group>
         <group name="Avatar">
           <primitive object={nodes.Hips} />
