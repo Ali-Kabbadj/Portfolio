@@ -88,7 +88,7 @@ export const Intro = () => {
 
 
     return (
-        <section className="flex flex-col items-center justify-center pt-24 pb-20 sm:pt-28">
+        <section id="home" className="flex flex-col items-center justify-center pt-24 pb-20 sm:pt-28 h-screen">
             <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center sm:flex-row">
                 <motion.h1
                     className="text-6xl lg:text-6xl font-bold text-center sm:text-4xl sm:leading-tight"

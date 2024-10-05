@@ -6,6 +6,7 @@ import Header from '~/components/global/navigation/header'
 import ActiveSectionContextProvider from '~/context/active-section-context'
 import ThemeContextProvider from '~/context/theme-context'
 import { ModeToggle } from '~/components/global/theming/ModeToggle'
+import { Toaster } from 'sonner'
 
 export const metadata: Metadata = {
     title: 'ALI KABBADJ - Developer',
@@ -21,7 +22,7 @@ const RobotoFont = Roboto_Mono({
 
 export default function RootLayout({
     children,
-}: Readonly<{ children: React.ReactNode }>) {
+}: { children: React.ReactNode }) {
     return (
         <ClerkProvider>
             <html
@@ -29,7 +30,7 @@ export default function RootLayout({
                 className={`${RobotoFont.className} !scroll-smooth`}
                 suppressHydrationWarning
             >
-                <body className="relative bg-background text-foreground antialiased">
+                <body className="relative bg-background text-foreground antialiased no-scrollbar">
                     <ThemeContextProvider>
                         <div className="relative">
                             {/* Background decoration */}
@@ -47,6 +48,7 @@ export default function RootLayout({
                                             </div>
                                     </main>
                                 </ActiveSectionContextProvider>
+                                 {/* <Toaster position="top-right" /> */}
                                 <ModeToggle />
                             </div>
                         </div>

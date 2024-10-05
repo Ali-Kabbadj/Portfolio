@@ -9,6 +9,14 @@ import { useActiveSectionContext } from '~/context/active-section-context'
 export default function Header() {
   const { activeSection, setActiveSection, setTimeOfLastClick } =
     useActiveSectionContext();
+    React.useEffect(() => {
+        const hash = window.location.hash;
+        const link = links.find((link) => link.hash === hash);
+        if (link) {
+            setActiveSection(link.name);
+            setTimeOfLastClick(Date.now());
+        }
+    }, []);
 
   return (
     <header className="z-[999] relative">
